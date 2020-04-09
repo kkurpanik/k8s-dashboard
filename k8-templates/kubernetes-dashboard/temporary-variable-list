@@ -1,3 +1,3 @@
-K8S_DASHBOARD_NAMESPACE = kubernetes-dashboard
-K8S_DASHBOARD_IMAGE = kubernetesui/dashboard:v2.0.0-rc7
-K8S_METRICS_SCRAPER_IMAGE = kubernetesui/metrics-scraper:v1.0.4
+K8S_DASHBOARD_NAMESPACE=kubernetes-dashboard
+K8S_DASHBOARD_IMAGE=kubernetesui/dashboard:v2.0.0-rc7
+K8S_METRICS_SCRAPER_IMAGE=kubernetesui/metrics-scraper:v1.0.4
