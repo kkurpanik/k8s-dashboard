@@ -1,0 +1,3 @@
+[submodule "k8-deployer"]
+	path = k8-deployer
+	url = git@github.ibm.com:CloudBroker/k8-deployer.git
