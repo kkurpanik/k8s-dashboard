@@ -21,11 +21,13 @@ spec:
           image: {{ K8S_DASHBOARD_IMAGE }}
           imagePullPolicy: Always
           ports:
-            - containerPort: 8443
+            - containerPort: 9090
               protocol: TCP
           args:
-            - --auto-generate-certificates
             - --namespace={{ K8S_DASHBOARD_NAMESPACE }}
+            - --insecure-bind-address=0.0.0.0
+            - --insecure-port=9090
+            - --enable-insecure-login
           volumeMounts:
             - name: kubernetes-dashboard-certs
               mountPath: /certs
@@ -33,9 +35,9 @@ spec:
               name: tmp-volume
           livenessProbe:
             httpGet:
-              scheme: HTTPS
+              scheme: HTTP
               path: /
-              port: 8443
+              port: 9090
             initialDelaySeconds: 30
             timeoutSeconds: 30
           securityContext:
@@ -44,9 +46,6 @@ spec:
             runAsUser: 1001
             runAsGroup: 2001
       volumes:
-        - name: kubernetes-dashboard-certs
-          secret:
-            secretName: kubernetes-dashboard-certs
         - name: tmp-volume
           emptyDir: {}
       serviceAccountName: kubernetes-dashboard
