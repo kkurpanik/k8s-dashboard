@@ -29,6 +29,8 @@ spec:
             - --insecure-port=9090
             - --enable-insecure-login
           volumeMounts:
+            - name: kubernetes-dashboard-certs
+              mountPath: /certs
             - mountPath: /tmp
               name: tmp-volume
           livenessProbe:
@@ -44,6 +46,9 @@ spec:
             runAsUser: 1001
             runAsGroup: 2001
       volumes:
+        - name: kubernetes-dashboard-certs
+          secret:
+            secretName: kubernetes-dashboard-certs
         - name: tmp-volume
           emptyDir: {}
       serviceAccountName: kubernetes-dashboard
