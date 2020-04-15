@@ -29,8 +29,6 @@ spec:
             - --insecure-port=9090
             - --enable-insecure-login
           volumeMounts:
-            - name: kubernetes-dashboard-certs
-              mountPath: /certs
             - mountPath: /tmp
               name: tmp-volume
           livenessProbe:
